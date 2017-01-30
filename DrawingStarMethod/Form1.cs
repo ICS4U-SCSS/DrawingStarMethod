@@ -28,22 +28,22 @@ namespace DrawingStarMethod
         /// size that the user indicated.
         private void drawButton_Click(object sender, EventArgs e)
         {
-            Graphics formGraphics = this.CreateGraphics();
-            Pen drawPen = new Pen(Color.Red);
+            try
+            {
+                Graphics formGraphics = this.CreateGraphics();
+                Pen drawPen = new Pen(Color.Red);
 
-            float xValue, yValue, size;
+                float xValue, yValue, size;
 
-            //xValue = Convert.ToSingle(xInput.Text);
-            //yValue = Convert.ToSingle(yInput.Text);
-            //size = Convert.ToSingle(sizeInput.Text);
+                xValue = Convert.ToSingle(xInput.Text);
+                yValue = Convert.ToSingle(yInput.Text);
+                size = Convert.ToSingle(sizeInput.Text);
 
-            formGraphics.Clear(Color.DarkKhaki);
-            //DrawStar(drawPen, xValue, yValue, size);
-            DrawStar(drawPen, 50, 50, 100);
-
-            string temp;
-
-            temp = testMeth("hello", "How are you");
+                formGraphics.Clear(Color.DarkKhaki);
+                DrawStar(drawPen, xValue, yValue, size);
+            }
+            catch
+            { }
        }
 
         /// <summary>
@@ -56,14 +56,11 @@ namespace DrawingStarMethod
         public void DrawStar(Pen starPen, float x, float y, float pixels)
         {
             Graphics formGraphics = this.CreateGraphics();
-           // Pen drawPen = new Pen(Color.Black);
-          //  SolidBrush drawBrush = new SolidBrush(Color.Red);
 
             // base star is 207 pixels wide.  A scale is created based on this value to determine how long
             // to draw each side so that it will end up being the number of pixels wide that the user desires.
             float scale = pixels / 207;
 
-            Thread.Sleep(2000);
             formGraphics.DrawLine(starPen, 80 * scale + x, 77 * scale + y, 103 * scale + x, 4 * scale + y);
             formGraphics.DrawLine(starPen, 103 * scale + x, 4 * scale + y, 126 * scale + x, 78 * scale + y);
             formGraphics.DrawLine(starPen, 126 * scale + x, 78 * scale + y, 207 * scale + x, 78 * scale + y);
@@ -78,29 +75,28 @@ namespace DrawingStarMethod
             // TODO put the above points into a PointF array and use DrawPolygon to draw your star
         }
 
-        public string testMeth(string message1, string message2)
-        {
-            MessageBox.Show(message1 + " " + message2);
-            return "done";
-        }
-
         /// Gathers information from the input boxes and then sends values
         /// to the FillStar method to draw the filled star in the location and the 
         /// size that the user indicated.
         private void fillButton_Click(object sender, EventArgs e)
         {
-            Graphics formGraphics = this.CreateGraphics();
-            Pen drawPen = new Pen(Color.Red);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            try
+            {
+                Graphics formGraphics = this.CreateGraphics();
+                Pen drawPen = new Pen(Color.Red);
+                SolidBrush drawBrush = new SolidBrush(Color.Black);
 
-            float xValue, yValue, size;
+                float xValue, yValue, size;
 
-            xValue = Convert.ToSingle(xInput.Text);
-            yValue = Convert.ToSingle(yInput.Text);
-            size = Convert.ToSingle(sizeInput.Text);
+                xValue = Convert.ToSingle(xInput.Text);
+                yValue = Convert.ToSingle(yInput.Text);
+                size = Convert.ToSingle(sizeInput.Text);
 
-            formGraphics.Clear(Color.DarkKhaki);
-            FillStar(drawBrush, xValue, yValue, size);
+                formGraphics.Clear(Color.DarkKhaki);
+                FillStar(drawBrush, xValue, yValue, size);
+            }
+            catch
+            { }
         }
 
         /// <summary>
@@ -113,7 +109,6 @@ namespace DrawingStarMethod
         public void FillStar(SolidBrush drawBrush, float x, float y, float pixels)
         {
             // TODO create FillStar code here similar to DrawStar code but using FillPolygon instead
-
         }
     }
 }
