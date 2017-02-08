@@ -70,7 +70,7 @@ namespace DrawingStarMethod
             g.DrawLine(starPen, 63 * scale + x, 123 * scale + y, 0 * scale + x, 77 * scale + y);
             g.DrawLine(starPen, 0 * scale + x, 77 * scale + y, 80 * scale + x, 77 * scale + y);
 
-            // TODO put the above points into a PointF array and use DrawPolygon to draw your star
+            //TODO: put the above points into a PointF array and use DrawPolygon to draw your star
         }
 
         /// Gathers information from the input boxes and then sends values
@@ -106,7 +106,7 @@ namespace DrawingStarMethod
         /// <param name="pixels">Side lengths of the square within which the star is drawn</param>
         public void FillStar(Graphics g, SolidBrush drawBrush, float x, float y, float pixels)
         {
-            // TODO create FillStar code here similar to DrawStar code but using FillPolygon instead
+            //TODO: create FillStar code here similar to DrawStar code but using FillPolygon instead
         }
     }
 }
