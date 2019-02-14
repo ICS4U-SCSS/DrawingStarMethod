@@ -30,7 +30,6 @@ namespace DrawingStarMethod
         {
             try
             {
-                Graphics formGraphics = this.CreateGraphics();
                 Pen drawPen = new Pen(Color.Red);
 
                 float xValue, yValue, size;
@@ -39,11 +38,14 @@ namespace DrawingStarMethod
                 yValue = Convert.ToSingle(yInput.Text);
                 size = Convert.ToSingle(sizeInput.Text);
 
-                formGraphics.Clear(Color.DarkKhaki);
-                DrawStar(formGraphics, drawPen, xValue, yValue, size);
+                Refresh();
+                DrawStar(drawPen, xValue, yValue, size);
             }
             catch
-            { }
+            {
+                MessageBox.Show("Integers only for inputs", 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
        }
 
         /// <summary>
@@ -53,8 +55,9 @@ namespace DrawingStarMethod
         /// <param name="x">X value of the top left corner of the square within which the star is drawn</param>
         /// <param name="y">Y value of the top left corner of the square within which the star is drawn</param>
         /// <param name="pixels">Side lengths of the square within which the star is drawn</param>
-        public void DrawStar(Graphics g, Pen starPen, float x, float y, float pixels)
+        public void DrawStar(Pen starPen, float x, float y, float pixels)
         {
+            Graphics g = this.CreateGraphics();
             // base star is 207 pixels wide.  A scale is created based on this value to determine how long
             // to draw each side so that it will end up being the number of pixels wide that the user desires.
             float scale = pixels / 207;
@@ -80,7 +83,6 @@ namespace DrawingStarMethod
         {
             try
             {
-                Graphics formGraphics = this.CreateGraphics();
                 Pen drawPen = new Pen(Color.Red);
                 SolidBrush drawBrush = new SolidBrush(Color.Black);
 
@@ -90,11 +92,14 @@ namespace DrawingStarMethod
                 yValue = Convert.ToSingle(yInput.Text);
                 size = Convert.ToSingle(sizeInput.Text);
 
-                formGraphics.Clear(Color.DarkKhaki);
-                FillStar(formGraphics, drawBrush, xValue, yValue, size);
+                Refresh();
+                FillStar(drawBrush, xValue, yValue, size);
             }
             catch
-            { }
+            {
+                MessageBox.Show("Integers only for inputs", 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -104,7 +109,7 @@ namespace DrawingStarMethod
         /// <param name="x">X value of the top left corner of the square within which the filled star is drawn</param>
         /// <param name="y">Y value of the top left corner of the square within which the filled star is drawn</param>
         /// <param name="pixels">Side lengths of the square within which the star is drawn</param>
-        public void FillStar(Graphics g, SolidBrush drawBrush, float x, float y, float pixels)
+        public void FillStar(SolidBrush drawBrush, float x, float y, float pixels)
         {
             //TODO: create FillStar code here similar to DrawStar code but using FillPolygon instead
         }
